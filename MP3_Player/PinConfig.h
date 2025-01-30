@@ -16,16 +16,16 @@
 #define DAC_LRC  15
 
 #define HOLD 17
-#define HOME_BUTTON
-#define BACK_BUTTON
-#define HOME_BUTTON
-#define HOME_BUTTON
+#define HOME_BUTTON       32
+#define BACK_BUTTON       33
+#define PLAY_PAUSE_BUTTON 35 
+#define MENU_BUTTON       34
 
 #define MOTOR_DRIVER 22
 
-
-
-
+#define ROTARY_ENC_DP 16
+#define ROTARY_ENC_DN 27
+#define ROTARY_ENC_BUTTON 0
 
 
 #endif
