@@ -23,8 +23,8 @@
 
 #define MOTOR_DRIVER 22
 
-#define ROTARY_ENC_DP 16
-#define ROTARY_ENC_DN 27
+#define VOLUME_ROTARY_ENC_A     16
+#define VOLUME_ROTARY_ENC_B     27
 #define ROTARY_ENC_BUTTON 0
 
 
