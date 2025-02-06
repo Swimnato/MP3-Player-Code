@@ -1,3 +1,18 @@
+/*
+
+
+WE HAVE MOVED TO PLATFORM IO
+
+PLEASE USE THAT
+
+THIS IS ONLY HERE AS A BACKUP PLAN
+
+*/
+
+
+
+
+
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include <SPI.h>
