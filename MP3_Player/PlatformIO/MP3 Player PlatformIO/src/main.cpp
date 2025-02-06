@@ -3,7 +3,7 @@
 #include <SPI.h>
 #include <Encoder.h>
 #include <InputManager.h>
-#include <ESP_I2S.h>
+#include <I2S.h>
 
 #define DEBUG_PRINTS true
 
