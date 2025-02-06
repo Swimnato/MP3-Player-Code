@@ -12,7 +12,7 @@ InputManager mainInput = InputManager();
 void setup() {
   // put your setup code here, to run once:
   #if DEBUG_PRINTS
-  Serial.begin(2000000);
+  Serial.begin(9600);
   Serial.println("Starting MP3 Player");
   #endif
 
