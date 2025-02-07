@@ -24,7 +24,7 @@
 #define MOTOR_DRIVER 22
 
 #define VOLUME_ROTARY_ENC_A     16
-#define VOLUME_ROTARY_ENC_B     27
+#define VOLUME_ROTARY_ENC_B     26 // we need to relocate this pin it is really 27 but it constantly resets when we use it
 #define ROTARY_ENC_BUTTON 0
 
 

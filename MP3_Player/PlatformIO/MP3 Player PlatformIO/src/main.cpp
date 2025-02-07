@@ -1,14 +1,13 @@
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include <SPI.h>
-#include <Encoder.h>
-#include <InputManager.h>
-#include <I2S.h>
-
-#define DEBUG_PRINTS true
+#include <Arduino.h>
+#include "PinConfig.h"
+#include "InputManager.h"
 
 InputManager mainInput = InputManager();
 
+#define DEBUG_PRINTS true
 void setup() {
   // put your setup code here, to run once:
   #if DEBUG_PRINTS
@@ -16,7 +15,7 @@ void setup() {
   Serial.println("Starting MP3 Player");
   #endif
 
-  mainInput.init();
+  //mainInput.init();
 
   #if DEBUG_PRINTS
   Serial.println("Input Initialized");
