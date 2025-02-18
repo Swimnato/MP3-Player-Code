@@ -1,17 +1,19 @@
 #include <PinConfig.h>
 #include <Arduino.h>
 #include <RotaryEncoder.h>
+#include <stdint.h>
+
 
 //debounce time in ms
 #define debounce 10 
 
 class InputManager{
 private:
-  const byte inputPins[5] = {HOME_BUTTON, BACK_BUTTON, PLAY_PAUSE_BUTTON, MENU_BUTTON, ROTARY_ENC_BUTTON};
+  const uint8_t inputPins[5] = {HOME_BUTTON, BACK_BUTTON, PLAY_PAUSE_BUTTON, MENU_BUTTON, ROTARY_ENC_BUTTON};
   bool buttonStatus[5] = {0,0,0,0,0};
   unsigned long buttonPressed[5];
   RotaryEncoder volWheel = RotaryEncoder(VOLUME_ROTARY_ENC_A, VOLUME_ROTARY_ENC_B);
-  long lastWheelPosition;
+  uint32_t lastWheelPosition;
 
   bool debounceButton(byte buttonIndex){
     if(buttonStatus[buttonIndex]){
@@ -23,7 +25,6 @@ private:
   }
 
 public:
-
   void init(){
     for(short i = 0; i < 5; i++){
       pinMode(inputPins[i], INPUT);
@@ -33,7 +34,6 @@ public:
   void update(){
     for(short i = 0; i < 5; i++){
       bool isPressed = digitalRead(inputPins[i]);
-
       if(isPressed && !buttonStatus[i]){
         buttonPressed[i] = millis();
       } else if(!isPressed){
@@ -46,9 +46,9 @@ public:
 
   #define PULSES_PER_CLICK 2
   short getTurnAmount(){
-    short amount = (volWheel.getPosition() - lastWheelPosition) / PULSES_PER_CLICK;
-    
-    lastWheelPosition += amount * PULSES_PER_CLICK;
+    uint32_t wheel_position = volWheel.getPosition();
+    int16_t amount = (wheel_position - lastWheelPosition) / PULSES_PER_CLICK;
+    lastWheelPosition = amount; 
     
     return amount;
   }

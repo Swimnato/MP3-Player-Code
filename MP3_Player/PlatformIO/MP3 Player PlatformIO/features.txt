@@ -1,0 +1,17 @@
+Necessary: 
+
+File Manager: Folders, MP3s, FLACS
+Plays MP3s, FLACS
+Playlists
+
+Layer 1 Stretch Goals:
+    Show I3D 2.3 Tags: Albums, Artists, etc
+    Index Library, play by albums, artists, etc
+
+Layer 2 Stretch Goals: 
+    Album art: harder then you'd think
+    
+    
+
+
+

@@ -1,0 +1,10 @@
+#ifndef AEA248EC_7D62_4FDE_A2FC_2EC364DD0287
+#define AEA248EC_7D62_4FDE_A2FC_2EC364DD0287
+#include <stdint.h>
+typedef int32_t error_t
+
+#define SUCCESS 0
+#define MOUNT_ERROR 1
+
+
+#endif /* AEA248EC_7D62_4FDE_A2FC_2EC364DD0287 */
