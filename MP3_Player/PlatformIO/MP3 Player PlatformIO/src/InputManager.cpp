@@ -1,6 +1,6 @@
 #include <PinConfig.h>
 #include <Arduino.h>
-#include <RotaryEncoder.h>
+#include <Encoder.h>
 #include <stdint.h>
 
 
@@ -12,7 +12,7 @@ private:
   const uint8_t inputPins[5] = {HOME_BUTTON, BACK_BUTTON, PLAY_PAUSE_BUTTON, MENU_BUTTON, ROTARY_ENC_BUTTON};
   bool buttonStatus[5] = {0,0,0,0,0};
   unsigned long buttonPressed[5];
-  RotaryEncoder volWheel = RotaryEncoder(VOLUME_ROTARY_ENC_A, VOLUME_ROTARY_ENC_B);
+  Encoder volWheel = Encoder(VOLUME_ROTARY_ENC_A, VOLUME_ROTARY_ENC_B);
   uint32_t lastWheelPosition;
 
   bool debounceButton(byte buttonIndex){
@@ -46,7 +46,7 @@ public:
 
   #define PULSES_PER_CLICK 2
   short getTurnAmount(){
-    uint32_t wheel_position = volWheel.getPosition();
+    uint32_t wheel_position = volWheel.read();
     int16_t amount = (wheel_position - lastWheelPosition) / PULSES_PER_CLICK;
     lastWheelPosition = amount; 
     
