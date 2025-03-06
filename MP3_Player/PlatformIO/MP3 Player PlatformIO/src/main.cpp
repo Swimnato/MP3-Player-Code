@@ -1,11 +1,11 @@
 #include "main.hpp"
 #include <SPI.h>
 #include <Arduino.h>
-#include "PinConfig.h"
+#include "PinConfig.hpp"
 #include "menu.hpp"
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
-#include "InputManager.h"
+#include "InputManager.hpp"
 
 InputManager mainInput = InputManager();
 Adafruit_ST7789 * tft;

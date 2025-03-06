@@ -1,6 +1,6 @@
 #ifndef C2D5D070_FF5F_4389_B03A_63C31BBB4A24
 #define C2D5D070_FF5F_4389_B03A_63C31BBB4A24
-#include "ErrorTypes.h"
+#include "ErrorTypes.hpp"
 #include "main.hpp"
 #include <stdint.h>
 #include <Adafruit_GFX.h>
