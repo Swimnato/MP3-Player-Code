@@ -1,4 +1,4 @@
-#include <PinConfig.h>
+#include <PinConfig.hpp>
 #include <Arduino.h>
 #include <Encoder.h>
 #include <stdint.h>

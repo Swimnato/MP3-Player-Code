@@ -1,5 +1,6 @@
 #ifndef EE80D13C_87C8_46EB_8F51_1AABB02206F3
 #define EE80D13C_87C8_46EB_8F51_1AABB02206F3
+<<<<<<< HEAD
 #include "ErrorTypes.h"
 #include <SPI.h>
 #include "SdFat.h"
@@ -56,7 +57,6 @@ error_t getNextFileWithExtension(uint8_t length, char* extension, uint8_t filena
 
 error_t resetCWD();
 error_t enterDirectory(uint8_t length, char* filename);
-
 
 
 #endif /* EE80D13C_87C8_46EB_8F51_1AABB02206F3 */

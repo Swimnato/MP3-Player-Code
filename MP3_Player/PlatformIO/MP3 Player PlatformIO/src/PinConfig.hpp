@@ -2,6 +2,7 @@
 #define PINCONFIG_H
 
 #ifdef LOLIN32_LITE
+#pragma message "Compiling with LOLIN Pinout!"
 #define ESP_MOSI  11
 #define ESP_MISO  13
 #define ESP_SCK   12
