@@ -5,6 +5,7 @@
 #include "SdFat.h"
 #include "PinConfig.hpp"
 #include "sdios.h"
+#include "ErrorCodes.hpp"
 
 #define DISABLE_FS_H_WARNING  // Disable warning for type File not defined.
 

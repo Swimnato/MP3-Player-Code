@@ -11,30 +11,30 @@ error_t write_string(uint8_t x, uint8_t y, char* string, uint8_t string_len, uin
 
     }
 
-    return 0;
+    return ALL_OK;
 }
 
 error_t clear_display() {
     tft->fillScreen(ST77XX_BLACK);
 
-    return 0;
+    return ALL_OK;
 }
 
 error_t draw_normal_menu_item(uint8_t row, char* string) {
     uint8_t text_y = row * FULL_LINE_HEIGHT + LINE_TEXT_SEPERATION;
     
 
-    return 0;
+    return ALL_OK;
 }
 
 error_t draw_home_menu(int itemSelected){
-    return 0;
+    return ALL_OK;
 }
 
 error_t draw_settings_menu(){
-    return 0;
+    return ALL_OK;
 }
 
 error_t draw_file_manager(){
-
+    return ALL_OK;
 }

@@ -30,5 +30,7 @@ error_t mountSD() {
     // Open root directory
     if (!dir.open("/")) {
         Serial.println("dir.open failed");   
-    }   
+        return SD_OPEN_ERROR;
+    }
+    return ALL_OK;
 }

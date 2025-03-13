@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7789.h>
+#include "ErrorCodes.hpp"
 
 #define LINE_TEXT_SEPERATION 2
 #define TEXT_HEIGHT 16
