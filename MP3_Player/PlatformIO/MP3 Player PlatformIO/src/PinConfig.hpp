@@ -34,6 +34,8 @@
 #define ESP_MISO  13
 #define ESP_SCK   12
 
+#define SD_CS_PIN 2
+
 #define SCREEN_DC 9
 #define SCREEN_CS 1
 #define SCREEN_BL 17
