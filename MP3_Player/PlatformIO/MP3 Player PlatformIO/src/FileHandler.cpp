@@ -8,5 +8,11 @@ char cinBuf[40];
 ArduinoInStream cin(Serial, cinBuf, sizeof(cinBuf));
 
 error_t mountSD() {
-    return 0;
+    if (!sd.begin(SD_CONFIG)) {
+        sd.initErrorHalt(&Serial);
+    }
+    // Open root directory
+    if (!dir.open("/")) {
+        error("dir.open failed");   
+    }   
 }
