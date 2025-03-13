@@ -26,3 +26,15 @@ error_t draw_normal_menu_item(uint8_t row, char* string) {
 
     return 0;
 }
+
+error_t draw_home_menu(int itemSelected){
+    return 0;
+}
+
+error_t draw_settings_menu(){
+    return 0;
+}
+
+error_t draw_file_manager(){
+
+}
