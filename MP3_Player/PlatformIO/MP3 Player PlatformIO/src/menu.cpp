@@ -1,5 +1,4 @@
 #include "menu.hpp"
-#include <Adafruit_GFX.h>
 extern Adafruit_ST7789 *tft;
 error_t write_string(uint8_t x, uint8_t y, String string, uint16_t color, uint16_t background_color, uint8_t fontSize = 2) {
     tft->setCursor(x, y);
