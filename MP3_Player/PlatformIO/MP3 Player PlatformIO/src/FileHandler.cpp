@@ -1,4 +1,5 @@
-#include "FileHandler.hpp"
+#include <FileHandler.hpp>
+#include <FatFile.h>
 
 #if SD_FAT_TYPE == 0
 SdFat sd;
@@ -23,6 +24,14 @@ FsFile file;
 char cinBuf[40];
 ArduinoInStream cin(Serial, cinBuf, sizeof(cinBuf));
 
+typedef struct ID3Tags {
+    char[20] artist;
+    char[20] album;
+    char[20] title;
+    uint8_t track_number;
+    uint8_t disc_number;
+}
+
 error_t mountSD() {
     if (!sd.begin(SD_CONFIG)) {
         sd.initErrorHalt(&Serial);
@@ -34,3 +43,11 @@ error_t mountSD() {
     }
     return ALL_OK;
 }
+
+error_t unmountSD() {
+    sd.end();
+}
+
+
+
+error_t parseID3Tags(FatFile file, ID3Tags *tags);
