@@ -1,30 +1,26 @@
 #include "menu.hpp"
-extern Adafruit_ST7789 *tft;
-error_t write_string(uint8_t x, uint8_t y, String string, uint16_t color, uint16_t background_color, uint8_t fontSize = 2) {
-    tft->setCursor(x, y);
-    tft->setTextColor(color, background_color);
-    tft->setTextSize(fontSize);
-    tft->setTextWrap(false);
-    tft->setCursor(x,y);
-    tft->print(string);
+#include "FileHandler.hpp"
+#include <Adafruit_Imagereader.h>
+#include "menu_icons.h"
+error_t write_string(Adafruit_ST7789* screen, uint8_t x, uint8_t y, char* string, uint16_t color, uint16_t background_color, uint8_t fontSize = 2) {
+    screen->setCursor(x, y);
+    screen->setTextColor(color, background_color);
+    screen->setTextSize(fontSize);
+    screen->setTextWrap(false);
+    screen->setCursor(x,y);
+    screen->print(string);
 
     return ALL_OK;
 }
 
-error_t clear_display() {
-    tft->fillScreen(ST77XX_BLACK);
-    return ALL_OK;
-}
-
-error_t draw_normal_menu_item(uint8_t row, String string) {
-    uint8_t text_y = row * FULL_LINE_HEIGHT + LINE_TEXT_SEPERATION;
+error_t draw_home_menu(int itemSelected, Adafruit_ST7789& screen, Adafruit_ImageReader& reader){
     
-    write_string(0,text_y, ST77XX_BLACK, ST77XX_WHITE);
-
-    return ALL_OK;
-}
-
-error_t draw_home_menu(int itemSelected){
+    screen->fillScreen(MENU_BACKGROUND_COLOR);
+    //Adafruit_ImageReader reader(sd);
+    for(icon_with_label each_icon_with_label : MENU_ICONS) {
+        each_icon_with_label.draw_icon_with_label(screen, reader);
+    }
+    draw_item_selection_box(itemSelected);
     return ALL_OK;
 }
 
