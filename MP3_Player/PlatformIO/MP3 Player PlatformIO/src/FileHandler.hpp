@@ -24,7 +24,7 @@
 #define SD_CONFIG SdSpiConfig(SD_CS_PIN, SHARED_SPI, SPI_SPEED)
 #endif  // HAS_TEENSY_SDIO
 
-typedef struct ID3Tags {
+struct ID3Tags {
     char artist[20];
     char album[20];
     char title[20];
@@ -35,30 +35,31 @@ typedef struct ID3Tags {
 class FileHandler {   
 private:
 
-    #if SD_FAT_TYPE == 0
-    SdFat sd;
-    FsFile dir;
-    FsFile file;
-    #elif SD_FAT_TYPE == 1
-    SdFat32 sd;
-    File32 dir;
-    File32 file;
-    #elif SD_FAT_TYPE == 2
-    SdExFat sd;
-    ExFile dir;
-    ExFile file;
-    #elif SD_FAT_TYPE == 3
-    SdFs sd;
-    FsFile dir;
-    FsFile file;
-    #else  // SD_FAT_TYPE
-    #error invalid SD_FAT_TYPE
-    #endif  // SD_FAT_TYPE
-
     char cinBuf[40];
     ArduinoInStream cin;
 
     public:
+        #if SD_FAT_TYPE == 0
+        SdFat sd;
+        FsFile dir;
+        FsFile file;
+        #elif SD_FAT_TYPE == 1
+        SdFat32 sd;
+        File32 dir;
+        File32 file;
+        #elif SD_FAT_TYPE == 2
+        SdExFat sd;
+        ExFile dir;
+        ExFile file;
+        #elif SD_FAT_TYPE == 3
+        SdFs sd;
+        FsFile dir;
+        FsFile file;
+        #else  // SD_FAT_TYPE
+        #error invalid SD_FAT_TYPE
+        #endif  // SD_FAT_TYPE
+
+
         error_t mountSD();
     
         error_t unmountSD();

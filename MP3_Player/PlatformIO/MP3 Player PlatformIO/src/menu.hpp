@@ -6,20 +6,26 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7789.h>
 #include "ErrorCodes.hpp"
+#include "FileHandler.hpp"
+#include <Adafruit_Imagereader.h>
+#include "menu_icons.h"
+#include "FileHandler.hpp"
 
-#define LINE_TEXT_SEPERATION 2
-#define TEXT_HEIGHT 16
-#define LINE_WIDTH 1
-#define FULL_LINE_HEIGHT LINE_TEXT_SEPERATION + 2*TEXT_HEIGHT + LINE_WIDTH
+class Menu {
+    private:
+    Adafruit_ST7789 tft;
+    Adafruit_ImageReader reader;
+    public:
 
-#define TEXT_X_START 4
-
-extern Adafruit_ST7789 *tft;
-
-error_t clear_display();
-
-error_t draw_selected_menu_item(uint8_t row, char* string, uint8_t string_len, uint8_t scroll_string_location);
-error_t draw_normal_menu_item(uint8_t row, char* string, uint8_t string_len);
-error_t write_string(uint8_t x, uint8_t y, char* string, uint8_t string_len);
+    Menu(FileHandler FileHandler);
+    error_t initialize_screen();
+    error_t write_string(uint8_t x, uint8_t y, char* string, uint16_t color, uint16_t background_color, uint8_t fontSize = 2);
+    error_t draw_home_menu(int itemSelected);
+    error_t draw_settings_menu();
+    error_t draw_file_manager();
+    void drawBMP(char* filename,int x, int y);
+    error_t draw_icon_with_label(icon_with_label& IconWithLabel);
+    void draw_item_selection_box(int item);
+};
 
 #endif /* C2D5D070_FF5F_4389_B03A_63C31BBB4A24 */

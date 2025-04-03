@@ -8,7 +8,6 @@
 #include "InputManager.hpp"
 
 InputManager mainInput = InputManager();
-Adafruit_ST7789 * tft;
 #define DEBUG_PRINTS true
 void setup() {
   // put your setup code here, to run once:
@@ -23,10 +22,7 @@ void setup() {
   Serial.println("Input Initialized");
   #endif
 
-  tft = new Adafruit_ST7789(SCREEN_CS, SCREEN_DC, -1);
-  tft->init(240, 320);
-  analogWrite(SCREEN_BL, 255);
-  clear_display();
+  
 
   #if DEBUG_PRINTS
   Serial.println("Screen Initialized");
