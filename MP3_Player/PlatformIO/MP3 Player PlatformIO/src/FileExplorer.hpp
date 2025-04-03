@@ -5,8 +5,13 @@
 #include "SdFat.h"
 
 
-error_t tick_display();
+class FileExplorer{
+private:
 
+public:
+    error_t tick_display();
+
+};
 
 
 

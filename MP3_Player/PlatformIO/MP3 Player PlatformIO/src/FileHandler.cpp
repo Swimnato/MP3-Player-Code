@@ -1,38 +1,7 @@
 #include <FileHandler.hpp>
-#include <FatFile.h>
 
-#if SD_FAT_TYPE == 0
-SdFat sd;
-FsFile dir;
-FsFile file;
-#elif SD_FAT_TYPE == 1
-SdFat32 sd;
-File32 dir;
-File32 file;
-#elif SD_FAT_TYPE == 2
-SdExFat sd;
-ExFile dir;
-ExFile file;
-#elif SD_FAT_TYPE == 3
-SdFs sd;
-FsFile dir;
-FsFile file;
-#else  // SD_FAT_TYPE
-#error invalid SD_FAT_TYPE
-#endif  // SD_FAT_TYPE
-
-char cinBuf[40];
-ArduinoInStream cin(Serial, cinBuf, sizeof(cinBuf));
-
-typedef struct ID3Tags {
-    char[20] artist;
-    char[20] album;
-    char[20] title;
-    uint8_t track_number;
-    uint8_t disc_number;
-}
-
-error_t mountSD() {
+error_t FileHandler::mountSD() {
+    cin = ArduinoInStream(Serial, cinBuf, sizeof(cinBuf));
     if (!sd.begin(SD_CONFIG)) {
         sd.initErrorHalt(&Serial);
     }
@@ -44,10 +13,13 @@ error_t mountSD() {
     return ALL_OK;
 }
 
-error_t unmountSD() {
+error_t FileHandler::unmountSD() {
     sd.end();
+    return ALL_OK;
 }
 
 
 
-error_t parseID3Tags(FatFile file, ID3Tags *tags);
+error_t FileHandler::parseID3Tags(FatFile file, ID3Tags *tags){
+    return ALL_OK;
+}
