@@ -5,7 +5,7 @@ Menu::Menu(FileHandler FileHandler) : tft(Adafruit_ST7789(SCREEN_CS, SCREEN_DC, 
 }
 
 error_t Menu::initialize_screen() {
-    tft.init(240, 320);
+    tft.init(240, 320); //init or begin?? //need to sd.begin?
     analogWrite(SCREEN_BL, 255);
 }
 
