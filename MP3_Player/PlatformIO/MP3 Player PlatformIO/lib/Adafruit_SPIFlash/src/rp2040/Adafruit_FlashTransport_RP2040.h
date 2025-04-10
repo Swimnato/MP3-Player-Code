@@ -50,7 +50,7 @@ public:
   static const uint32_t CPY_SIZE;
 
   // Generic constructor with address and size. If start_address and size are 0,
-  // value that matches filesystem setting in 'Tools->Flash Size' menu selection
+  // value that matches filesystem setting in 'Tools->Flash Size' ui selection
   // will be used.
   //
   // To be compatible with CircuitPython partition scheme (start_address = 1

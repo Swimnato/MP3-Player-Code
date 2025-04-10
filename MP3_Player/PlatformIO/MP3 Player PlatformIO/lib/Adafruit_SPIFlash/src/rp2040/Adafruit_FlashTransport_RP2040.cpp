@@ -28,12 +28,12 @@
 
 #include <hardware/flash.h>
 
-// symbol from linker that matches 'Tools->Flash Size' menu selection for
+// symbol from linker that matches 'Tools->Flash Size' ui selection for
 // filesystem
 extern uint8_t _FS_start;
 extern uint8_t _FS_end;
 
-// FS Size determined by menu selection
+// FS Size determined by ui selection
 #define MENU_FS_SIZE ((uint32_t)(&_FS_end - &_FS_start))
 
 // CircuitPython partition scheme with
@@ -71,7 +71,7 @@ Adafruit_FlashTransport_RP2040::Adafruit_FlashTransport_RP2040(
   _start_addr = start_addr;
   _size = size;
 
-  // detect start address and size that match menu option
+  // detect start address and size that match ui option
   if (!_start_addr) {
     _start_addr = (uint32_t)&_FS_start - XIP_BASE;
   }

@@ -1,7 +1,11 @@
 #define MENU_BACKGROUND_COLOR ST77XX_BLACK
 #define MENU_TEXT_COLOR ST77XX_WHITE
+#define MENU_SELECTION_COLOR ST77XX_WHITE
+#define MENU_SELECTION_OFFSET 5
+#define DEFAULT_FONT_SIZE 5
 #define ICON_HEIGHT 24
-#include "menu.hpp"
+#define ICON_WIDTH 24
+#include "UI.hpp"
 
 class icon_with_label {
     public:

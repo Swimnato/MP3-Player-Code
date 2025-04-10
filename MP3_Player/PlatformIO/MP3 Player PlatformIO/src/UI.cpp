@@ -1,6 +1,6 @@
-#include "menu.hpp"
+#include "UI.hpp"
 
-UI::UI(FileHandler& FileHandler, InputManager& an_input_manager) : tft(Adafruit_ST7789(SCREEN_CS, SCREEN_DC, -1)), reader(Adafruit_ImageReader(FileHandler.sd)), input_manager(an_imput_manager) {
+UI::UI(FileHandler& FileHandler, InputManager& an_input_manager) : tft(Adafruit_ST7789(SCREEN_CS, SCREEN_DC, -1)), reader(Adafruit_ImageReader(FileHandler.sd)), input_manager(&an_input_manager) {
     selected = 0;
 }
 
@@ -30,7 +30,7 @@ error_t UI::draw_icon_with_label(icon_with_label& iconWithLabel) {
     return ALL_OK;
 }
 
-error_t UI::draw_home_menu(){
+error_t UI::draw_home_menu() {
     tft.fillScreen(MENU_BACKGROUND_COLOR);
     //Adafruit_ImageReader reader(sd);
     for(icon_with_label each_icon_with_label : MENU_ICONS) {
@@ -62,7 +62,6 @@ error_t UI::draw_file_manager(){
 void UI::update() { //gets called every frame when in the ui
     //get offset
     //get click
-    /*
     if (click) {
         //how do we handle global state?
     }
@@ -71,5 +70,4 @@ void UI::update() { //gets called every frame when in the ui
         item %= 4;
         draw_home_menu();
     }
-    */
 }

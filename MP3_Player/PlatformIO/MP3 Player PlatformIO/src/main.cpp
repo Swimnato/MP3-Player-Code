@@ -2,12 +2,14 @@
 #include <SPI.h>
 #include <Arduino.h>
 #include "PinConfig.hpp"
-#include "menu.hpp"
+#include "UI.hpp"
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include "InputManager.hpp"
 
 InputManager mainInput = InputManager();
+FileHandler fileHandler = FileHandler(); 
+UI ui = UI(fileHandler, mainInput);
 #define DEBUG_PRINTS true
 void setup() {
   // put your setup code here, to run once:
@@ -16,7 +18,7 @@ void setup() {
   Serial.println("Starting MP3 Player");
   #endif
 
-  //mainInput.init();
+  mainInput.init();
 
   #if DEBUG_PRINTS
   Serial.println("Input Initialized");
@@ -45,4 +47,21 @@ void loop() {
   Serial.print("\tEncoder Rotation Since Last Loop: ");
   Serial.println(mainInput.getTurnAmount());
   #endif
+
+  //this switch statement go here or in UI class ui.update()?
+  // switch (ui.current_menu){
+  //   case MAIN_MENU:
+  //     menu.update();
+  //     break;
+  //   case SETTINGS:
+  //     settings.update();
+  //     break;
+  //   case FILE:
+  //     file.update();
+  //     break;
+  //   case MUSIC:
+  //     music.update();
+  //     break;
+  // }
+  ui.update();
 }

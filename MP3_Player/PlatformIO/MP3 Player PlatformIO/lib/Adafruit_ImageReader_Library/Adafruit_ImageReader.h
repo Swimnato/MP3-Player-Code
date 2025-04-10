@@ -17,6 +17,8 @@
 
 #include "Adafruit_SPIFlash.h"
 #include "Adafruit_SPITFT.h"
+#include "SdFat.h"
+#include "SD.h"
 
 /** Status codes returned by drawBMP() and loadBMP() */
 enum ImageReturnCode {
@@ -94,7 +96,7 @@ protected:
 */
 class Adafruit_ImageReader {
 public:
-  Adafruit_ImageReader(FatVolume &fs);
+  Adafruit_ImageReader(SdFat &fs);
   ~Adafruit_ImageReader(void);
   ImageReturnCode drawBMP(const char *filename, Adafruit_SPITFT &tft, int16_t x,
                           int16_t y, boolean transact = true);
@@ -103,8 +105,8 @@ public:
   void printStatus(ImageReturnCode stat, Stream &stream = Serial);
 
 protected:
-  FatVolume *filesys; ///< FAT FileSystem Object
-  File32 file;        ///< Current Open file
+  SdFat *filesys; ///< FAT FileSystem Object
+  SDFile file;        ///< Current Open file
   ImageReturnCode coreBMP(const char *filename, Adafruit_SPITFT *tft,
                           uint16_t *dest, int16_t x, int16_t y,
                           Adafruit_Image *img, boolean transact);
