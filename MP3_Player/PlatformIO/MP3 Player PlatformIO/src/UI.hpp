@@ -28,8 +28,15 @@ class UI {
     int selected; //0-3, which icon is selected, goes in order of music, files, settings, DOOM
     public:
     CurrentMenu current_menu = MAIN_MENU;
+    class CurrentSettings {
+        public:
+        short font_size;
+        uint16_t background_color;
+        CurrentSettings();
+    };
+    CurrentSettings current_settings;
 
-    UI(FileHandler& FileHandler, InputManager& an_input_manager);
+    UI(FileHandler& FileHandler, InputManager* an_input_manager);
     error_t initialize_screen();
     error_t write_string(uint8_t x, uint8_t y, char* string, uint16_t color, uint16_t background_color, uint8_t fontSize);
     error_t draw_home_menu();

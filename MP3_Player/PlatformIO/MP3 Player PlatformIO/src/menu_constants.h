@@ -1,4 +1,4 @@
-#define MENU_BACKGROUND_COLOR ST77XX_BLACK
+#define DEFAULT_MENU_BACKGROUND_COLOR ST77XX_BLACK
 #define MENU_TEXT_COLOR ST77XX_WHITE
 #define MENU_SELECTION_COLOR ST77XX_WHITE
 #define MENU_SELECTION_OFFSET 5
@@ -26,9 +26,17 @@ class icon_with_label { //used in main menu
     }
 };
 
-icon_with_label MENU_ICONS[4] = {
+icon_with_label MENU_ICONS[4] = { //the icons in the main menu
     icon_with_label("music.bmp","Music",5,10,10),
     icon_with_label("files.bmp","Files",5,10,170),
     icon_with_label("settings.bmp","Settings",8,130,10),
     icon_with_label("doom.bmp","DOOM",4,130,170)
 };
+
+char SETTINGS_OPTIONS[32][64] = { //the options in the settings menu
+    "Font size",
+    "Background color",
+    "Screen timeout",
+    "British spelling",
+    "Sinusoidal repleneration"
+}

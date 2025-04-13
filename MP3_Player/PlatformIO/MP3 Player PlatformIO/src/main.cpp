@@ -9,7 +9,7 @@
 
 InputManager mainInput = InputManager();
 FileHandler fileHandler = FileHandler(); 
-UI ui = UI(fileHandler, mainInput);
+UI ui = UI(fileHandler, &mainInput);
 #define DEBUG_PRINTS true
 void setup() {
   // put your setup code here, to run once:
