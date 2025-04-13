@@ -51,7 +51,7 @@ void UI::draw_item_selection_box() {
         MENU_SELECTION_COLOR);
 }
     
-error_t UI::draw_settings_menu(){
+error_t UI::draw_music_player(){
     return ALL_OK;
 }
     
@@ -59,15 +59,77 @@ error_t UI::draw_file_manager(){
     return ALL_OK;
 }
 
-void UI::update() { //gets called every frame when in the ui
-    //get offset
-    //get click
-    if (click) {
-        //how do we handle global state?
+error_t UI::draw_settings_menu(){
+    return ALL_OK;
+}
+
+void UI::ready_new_program() {
+    input_manager -> getTurnAmount(); //keep scrolling from the last menu from carrying over to the new one
+}
+
+error_t UI::open_music_player(){
+    ready_new_program();
+    draw_music_player(); //will get redrawn by music_update if something changes, but someone's got to draw it the first time
+    return ALL_OK;
+}
+    
+error_t UI::open_file_manager(){
+    ready_new_program();
+    draw_file_manager();
+    return ALL_OK;
+}
+
+error_t UI::open_settings_menu(){
+    ready_new_program();
+    draw_settings_menu();
+    return ALL_OK;
+}
+
+void UI::home_menu_update() {
+    if (input_manager -> isPlayPausePressed()) {
+        switch (selected) {
+            case 0: //music
+                current_menu = MUSIC;
+                open_music_player(); //it'll be drawn again when update() is called if something changed, but something has to draw it the first time
+                break;
+            case 1: //files
+                current_menu = FILE_MENU;
+                open_file_manager();
+                break;
+            case 2: //settings
+                current_menu = SETTINGS;
+                open_settings_menu();
+                break;
+            case 3: //DOOM
+                //TODO: run doom
+                break;
+        }
+        return; //no further updates are relevant
     }
-    if (offset) {
-        item += offset;
-        item %= 4;
-        draw_home_menu();
+    short turn_amount = input_manager -> getTurnAmount(); //how much have we scrolled?
+    if (turn_amount) {
+        selected += turn_amount;
+        selected %= 4; //loop around
+        draw_home_menu(); //only need to redraw if the selected item changed
+    }
+}
+
+
+
+
+void UI::update() { //gets called every frame when in the ui
+    switch (current_menu) {
+        case MAIN_MENU:
+            home_menu_update();
+            break;
+        case SETTINGS:
+            settings_update();
+            break;
+        case FILE_MENU:
+            file_update();
+            break;
+        case MUSIC:
+            music_update();
+            break;
     }
 }

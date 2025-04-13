@@ -48,20 +48,6 @@ void loop() {
   Serial.println(mainInput.getTurnAmount());
   #endif
 
-  //this switch statement go here or in UI class ui.update()?
-  // switch (ui.current_menu){
-  //   case MAIN_MENU:
-  //     menu.update();
-  //     break;
-  //   case SETTINGS:
-  //     settings.update();
-  //     break;
-  //   case FILE:
-  //     file.update();
-  //     break;
-  //   case MUSIC:
-  //     music.update();
-  //     break;
-  // }
+  
   ui.update();
 }
