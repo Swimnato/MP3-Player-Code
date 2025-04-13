@@ -56,35 +56,41 @@ void UI::draw_item_selection_box() { //for the main menu
         MENU_SELECTION_COLOR);
 }
     
-error_t UI::draw_music_player(){
+error_t UI::draw_music_player() {
     return ALL_OK;
 }
     
-error_t UI::draw_file_manager(){
+error_t UI::draw_file_manager() {
     return ALL_OK;
 }
 
-error_t UI::draw_settings_menu(){
+error_t UI::draw_settings_menu() {
     return ALL_OK;
 }
 
 void UI::ready_new_program() {
     input_manager -> getTurnAmount(); //keep scrolling from the last menu from carrying over to the new one
+    selected = 0; //always start on the first icon; plus this lets us reuse selected between settings and home menus
 }
 
-error_t UI::open_music_player(){
+error_t UI::open_home_menu() {
+    ready_new_program();
+    draw_home_menu();
+}
+
+error_t UI::open_music_player() {
     ready_new_program();
     draw_music_player(); //will get redrawn by music_update if something changes, but someone's got to draw it the first time
     return ALL_OK;
 }
     
-error_t UI::open_file_manager(){
+error_t UI::open_file_manager() {
     ready_new_program();
     draw_file_manager();
     return ALL_OK;
 }
 
-error_t UI::open_settings_menu(){
+error_t UI::open_settings_menu() {
     ready_new_program();
     draw_settings_menu();
     return ALL_OK;
@@ -127,8 +133,19 @@ void UI::file_manager_update() {
     return;
 }
 
-void UI::settings_menu_update() {
-    return;
+void UI::settings_menu_update() { //very similar to home_menu_update
+    if (input_manager -> isPlayPausePressed()) {
+        switch (selected) {
+            case 0://TODO: Add the rest
+            break;
+        }
+    }
+    short turn_amount = input_manager -> getTurnAmount(); //how much have we scrolled?
+    if (turn_amount) {
+        selected += turn_amount;
+        keep_in_bounds(selected); //don't run off the beginning or end of the list
+        draw_settings_menu(); //only need to redraw if the selected item changed
+    }
 }
 
 void UI::update() { //gets called every frame when in the ui

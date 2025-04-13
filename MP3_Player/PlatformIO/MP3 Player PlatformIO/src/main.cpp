@@ -29,6 +29,8 @@ void setup() {
   #if DEBUG_PRINTS
   Serial.println("Screen Initialized");
   #endif
+
+  ui.open_home_menu();
 }
 
 void loop() {

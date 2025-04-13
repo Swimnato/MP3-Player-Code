@@ -39,17 +39,22 @@ class UI {
     UI(FileHandler& FileHandler, InputManager* an_input_manager);
     error_t initialize_screen();
     error_t write_string(uint8_t x, uint8_t y, char* string, uint16_t color, uint16_t background_color, uint8_t fontSize);
+
     error_t draw_home_menu();
     error_t draw_music_player();
     error_t draw_file_manager();
     error_t draw_settings_menu();
+
     void ready_new_program();
+    error_t open_home_menu();
     error_t open_music_player();
     error_t open_file_manager();
     error_t open_settings_menu();
+
     void drawBMP(char* filename,int x, int y);
     error_t draw_icon_with_label(icon_with_label& IconWithLabel);
     void draw_item_selection_box();
+
     void home_menu_update();
     void music_player_update();
     void file_manager_update();
