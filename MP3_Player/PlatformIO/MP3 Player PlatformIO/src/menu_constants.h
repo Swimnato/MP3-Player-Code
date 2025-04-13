@@ -7,7 +7,7 @@
 #define ICON_WIDTH 24
 #include "UI.hpp"
 
-class icon_with_label {
+class icon_with_label { //used in main menu
     public:
     char icon_filename[64];
     char label[16];

@@ -114,8 +114,17 @@ void UI::home_menu_update() {
     }
 }
 
+void UI::music_player_update() {
+    return;
+}
 
+void UI::file_manager_update() {
+    return;
+}
 
+void UI::settings_menu_update() {
+    return;
+}
 
 void UI::update() { //gets called every frame when in the ui
     switch (current_menu) {
@@ -123,13 +132,13 @@ void UI::update() { //gets called every frame when in the ui
             home_menu_update();
             break;
         case SETTINGS:
-            settings_update();
+            settings_menu_update();
             break;
         case FILE_MENU:
-            file_update();
+            file_manager_update();
             break;
         case MUSIC:
-            music_update();
+            music_player_update();
             break;
     }
 }

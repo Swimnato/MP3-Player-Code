@@ -44,6 +44,9 @@ class UI {
     error_t draw_icon_with_label(icon_with_label& IconWithLabel);
     void draw_item_selection_box();
     void home_menu_update();
+    void music_player_update();
+    void file_manager_update();
+    void settings_menu_update();
     void update();
 };
 
